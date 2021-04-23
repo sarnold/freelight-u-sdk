@@ -9,7 +9,7 @@
            sync-c="true"
            sync-j="4" />
 
-  <project name="freelight-u-sdk" remote="sarnold" path="freelight-u-sdk" revision="starfive" />
+  <project name="freelight-u-sdk" remote="sarnold" path="freelight-u-sdk" revision="manifest" />
   <project name="sft-riscv-uboot" remote="starfive-tech" path="freelight-u-sdk/HiFive_U-Boot" revision="starfive" />
   <project name="sft-riscv-linux-5.10" remote="starfive-tech" path="freelight-u-sdk/linux" revision="starfive" />
   <project name="sft-riscv-opensbi" remote="starfive-tech" path="freelight-u-sdk/opensbi" revision="starfive" />
