@@ -80,6 +80,14 @@ u-boot prompt:
     BeagleV # bootm ${ramdisk_addr_r}
 
 
+### Local toolchain override
+
+If you already built (or downloaded) a proper toolchain, for now you can override the
+following make variables:
+
+	target=riscv64-unknown-linux-gnu RVPATH=$PATH target_gcc=/usr/bin/riscv64-unknown-linux-gnu-gcc CROSS_COMPILE=riscv64-unknown-linux-gnu- make uboot
+
+
 ## Running on BeagleV ##
 
 After the BeagleV™ is properly connected to the serial port cable, network cable and power cord turn on the power from the wall power socket to power on the BeagleV™ and you will see the startup information as follows:
