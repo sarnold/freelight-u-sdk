@@ -37,7 +37,7 @@ Repo initialization:
 sync repo:
 
     $ repo sync
-    $ repo start work --all
+    $ repo start starfive --all
 
 ### Update existing workspace
 
@@ -125,6 +125,7 @@ following make variables:
 
     target=riscv64-unknown-linux-gnu RVPATH=$PATH target_gcc=/usr/bin/riscv64-unknown-linux-gnu-gcc CROSS_COMPILE=riscv64-unknown-linux-gnu- make uboot
 
+**Note** this only works for individual targets: uboot, vmlinux, sbi, etc.
         
 ## Running on BeagleV ##
 
