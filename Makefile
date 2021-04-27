@@ -82,7 +82,7 @@ endif
 uboot_defconfig := $(uboot_srcdir)/configs/$(uboot_config)
 rootfs := $(wrkdir)/rootfs.bin
 
-target_gcc ?= $(CROSS_COMPILE)gcc
+target_gcc := $(CROSS_COMPILE)gcc
 
 .PHONY: all nvdla-demo
 nvdla-demo: $(fit) $(vfat_image)
