@@ -163,3 +163,9 @@ When you see the `buildroot login:` message, then congratulations, the launch wa
 
     buildroot login:root
     Password: starfive
+
+
+If dhcp fails on boot, try logging in as root and run:
+
+    # ifup eth0
+
