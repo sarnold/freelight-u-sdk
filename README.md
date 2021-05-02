@@ -6,6 +6,7 @@ image with a OpenSBI binary, linux kernel, device tree, ramdisk and rootdisk for
 ## Prerequisites ##
 
 Recommend OS: Ubuntu 16.04/18.04
+Tested on: Gentoo, Ubuntu 18.04
 
 After installing the operating system.
 Do not forget updating all packages
@@ -19,6 +20,8 @@ Install required additional packages.
     build-essential curl flex gawk gdisk git gperf libgmp-dev \
     libmpc-dev libmpfr-dev libncurses-dev libssl-dev libtool \
     patchutils python screen texinfo unzip zlib1g-dev device-tree-compiler
+
+**Note: On Gentoo, if you don't have vim installed, you'll need it for the `xxd` tool.
 
 ## Download Sources ##
 
@@ -117,6 +120,22 @@ u-boot prompt:
     (wait for loading)
     BeagleV # bootm ${ramdisk_addr_r}
 
+### Deploy a boot script
+
+One way to automate the boot process would be to use u-boot's handy-dandy
+`boot.scr` method (see the modified example from the meta-riscv repo in
+`conf/beaglev-uEnv.txt`). To deploy it on your sdcard:
+
+* open it in your favorite editor, and (optionally) edit the boot args
+  and/or kernel image name (the defaults match the current SDK build)
+* compile it using u-boot's' `mkimage` command:
+
+    $ mkimage -C none -A riscv -T script -d conf/beaglev-uEnv.txt boot.scr
+
+* copy the resulting `boot.scr` to the first (vfat) partition on the sdcard
+* insert the sdcard and power it up
+* wait for the console login prompt
+
 
 ### Local toolchain override
 
@@ -125,7 +144,7 @@ following make variables:
 
     target=riscv64-unknown-linux-gnu RVPATH=$PATH target_gcc=/usr/bin/riscv64-unknown-linux-gnu-gcc CROSS_COMPILE=riscv64-unknown-linux-gnu- make uboot
 
-**Note** this only works for individual targets: uboot, vmlinux, sbi, etc.
+**Note** this only works for individual targets: uboot, vmlinux, sbi, etc (but not buildroot).
         
 ## Running on BeagleV ##
 
