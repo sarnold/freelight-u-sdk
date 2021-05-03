@@ -74,9 +74,13 @@ Smallest/fastest sync:
 
 ## Build Instructions ##
 
-After update submodules, run `make` or `make -jx` and the complete toolchain and
-fw_payload.bin.out & image.fit will be built. The completed build tree will consume about 18G of
-disk space.
+After syncing repositories, cd into the top-level SDK directory:
+
+    $ cd freelight-u-sdk/
+
+Then run `make` or `make -jx` and the complete toolchain, initramfs,
+fw_payload.bin.out & image.fit will be built. The completed build tree
+will consume about 18G of disk space.
 
 Copy files fw_payload.bin.out and image.fit to tftp installation path to use
 
@@ -89,7 +93,7 @@ Copy files fw_payload.bin.out and image.fit to tftp installation path to use
 If you don't already use a local tftp server, then you probably want to make
 the sdcard target; the default size is 16 GBs. NOTE THIS WILL DESTROY ALL
 EXISTING DATA on the target sdcard; make sure you know the correct disk,
-eg, with the lsblk command::
+eg, with the lsblk command:
 
     $ lsblk
     NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
