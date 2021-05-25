@@ -28,7 +28,8 @@ buildroot_rootfs_config := $(confdir)/buildroot_rootfs_config
 
 linux_srcdir := $(srcdir)/linux
 linux_wrkdir := $(wrkdir)/linux
-linux_defconfig := $(confdir)/sdk_210209_defconfig
+linux_defconfig := $(confdir)/sdk_210521_defconfig
+linux_dtb_file := $(wrkdir)/linux/arch/riscv/boot/dts/starfive/jh7100-starlight.dtb
 
 vmlinux := $(linux_wrkdir)/vmlinux
 vmlinux_stripped := $(linux_wrkdir)/vmlinux-stripped
@@ -67,14 +68,14 @@ qemu_srcdir := $(srcdir)/riscv-qemu
 qemu_wrkdir := $(wrkdir)/riscv-qemu
 qemu := $(qemu_wrkdir)/prefix/bin/qemu-system-riscv64
 
-uboot_srcdir := $(srcdir)/HiFive_U-Boot
-uboot_wrkdir := $(wrkdir)/HiFive_U-Boot
-uboot_dtb_file := $(wrkdir)/HiFive_U-Boot/arch/riscv/dts/starfive_vic7100_evb.dtb
+uboot_srcdir := $(srcdir)/u-boot
+uboot_wrkdir := $(wrkdir)/u-boot
+uboot_dtb_file := $(wrkdir)/u-boot/arch/riscv/dts/starfive_vic7100_beagle_v.dtb
 uboot := $(uboot_wrkdir)/u-boot.bin
 uboot_config := HiFive-U540_regression_defconfig
 
 ifeq ($(TARGET_BOARD),U74)
-	uboot_config := starfive_vic7100_evb_smode_defconfig
+	uboot_config := starfive_vic7100_beagle_v_smode_defconfig
 else
 	uboot_config := HiFive-U540_nvdla_iofpga_defconfig
 endif
@@ -195,6 +196,7 @@ $(initramfs).d: $(buildroot_initramfs_sysroot)
 	$(linux_srcdir)/usr/gen_initramfs_list.sh -l $(confdir)/initramfs.txt $(buildroot_initramfs_sysroot) > $@
 
 $(initramfs): $(buildroot_initramfs_sysroot) $(vmlinux)
+	cp -v $(srcdir)/tools/gen_initramfs_list.sh $(linux_srcdir)/usr/
 	cd $(linux_wrkdir) && \
 		$(linux_srcdir)/usr/gen_initramfs_list.sh \
 		-o $@ -u $(shell id -u) -g $(shell id -g) \
@@ -282,7 +284,7 @@ fit: $(fit)
 
 .PHONY: clean
 clean:
-	rm -rf work/HiFive_U-Boot
+	rm -rf work/u-boot
 	rm -rf work/opensbi
 	rm work/vmlinux.bin
 	rm work/hifive-unleashed-vfat.part

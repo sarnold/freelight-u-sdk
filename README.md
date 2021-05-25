@@ -127,9 +127,9 @@ like:
 to generate a 4 GB sdcard. Currently you need to boot it manually from the
 u-boot prompt:
 
-    BeagleV # fatload mmc 0 ${ramdisk_addr_r} hifiveu.fit
+    BeagleV # fatload mmc 0 a0000000 hifiveu.fit
     (wait for loading)
-    BeagleV # bootm ${ramdisk_addr_r}
+    BeagleV # bootm a0000000
 
 ### Deploy a boot script
 

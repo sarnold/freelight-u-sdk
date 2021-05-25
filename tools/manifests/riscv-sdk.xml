@@ -4,15 +4,16 @@
   <remote name="starfive-tech" fetch="git://github.com/starfive-tech/" />
   <remote name="tpetazzoni" fetch="https://github.com/tpetazzoni/" />
   <remote name="nerdboy" fetch="https://github.com/sarnold/" />
+  <remote name="vct" fetch="https://github.com/VCTLabs/" />
   <default remote="starfive-tech"
            revision="starfive"
            sync-c="true"
            sync-j="4" />
 
-  <project name="freelight-u-sdk" remote="nerdboy" path="freelight-u-sdk" revision="manifest-pr" />
-  <project name="u-boot" remote="starfive-tech" path="freelight-u-sdk/HiFive_U-Boot" revision="Fedora" />
-  <project name="linux" remote="starfive-tech" path="freelight-u-sdk/linux" revision="Fedora" />
-  <project name="opensbi" remote="starfive-tech" path="freelight-u-sdk/opensbi" revision="Fedora" />
-  <project name="buildroot" remote="tpetazzoni" path="freelight-u-sdk/buildroot" revision="beaglev" />
+  <project name="freelight-u-sdk" remote="nerdboy" path="freelight-u-sdk" revision="manifest-test" />
+  <project name="u-boot" remote="nerdboy" path="freelight-u-sdk/u-boot" revision="starlight-xpr" />
+  <project name="linux" remote="starfive-tech" path="freelight-u-sdk/linux" revision="esmil_starlight_devel" />
+  <project name="opensbi" remote="starfive-tech" path="freelight-u-sdk/opensbi" revision="StarFive_VIC_7100" />
+  <project name="sft-riscv-buildroot" remote="starfive-tech" path="freelight-u-sdk/buildroot" revision="starfive" />
 
 </manifest>

@@ -17,7 +17,7 @@
                 };
 
                 fdt {
-                        data = /incbin/("../work/HiFive_U-Boot/arch/riscv/dts/starfive_vic7100_evb.dtb");
+                        data = /incbin/("../work/linux/arch/riscv/boot/dts/starfive/jh7100-starlight.dtb");
                         type = "flat_dt";
                         arch = "riscv";
                         load = <0x0 0x86000000>;
